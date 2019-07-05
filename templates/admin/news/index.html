@@ -1,0 +1,45 @@
+{% extends 'partials/_admin_master.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <a href="{% url 'news-create' %}" class="btn btn-primary">Create</a>
+  </div>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title ">News</h4>
+        <p class="card-category"> Listing all news</p>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th width="80">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for post in posts %}
+                <tr>
+                  <td>{{ post.id }}</td>
+                  <td>{{ post.title }}</td>
+                  <td>
+                    <a href="/news/{{ post.id }}/edit"><i class="fas fa-edit"></i></a>
+                    <a href="#"><i class="fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock content %}
